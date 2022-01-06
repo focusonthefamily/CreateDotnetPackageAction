@@ -11,5 +11,6 @@ This action builds a zipfile in the working directory named `release.zip` of a s
 ## Example usage
 
   uses: focusonthefamily/CreateDotnetPackageAction@v1
+  
   with:
     project-name: PingOne.AspNetCore.Oidc
