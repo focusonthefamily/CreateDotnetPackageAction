@@ -6,7 +6,7 @@ This action builds a zipfile in the working directory named `release.zip` of a s
 
 ## `project-name`
 
-**Required** The name of the project being built. i.e (<<projectName>>.csproj)
+**Required** The name of the project being built. i.e (**projectName**.csproj)
 
 ## Example usage
 
