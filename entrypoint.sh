@@ -1,12 +1,9 @@
 #!/bin/bash
 set -euxo pipefail
 workingDirectory=$(pwd)
-slnDirectory=$(find $workingDirectory -type f -name '*.sln' | dirname xargs-0)
-if [ -n $slnDirectory ]; then
-    cd $slnDirectory
-fi
+cd $(find $workingDirectory -type f -name '*.sln' | dirname xargs-0)
 dotnet restore
-dotnet test
+dotnet test -v n
 dotnet publish --no-restore -r linux-x64 --configuration Release --self-contained true
 publishDirectory=$(find $workingDirectory -type d -name 'publish' -path "*${1}*")
 if [ -z $publishDirectory ]; then
@@ -14,7 +11,7 @@ if [ -z $publishDirectory ]; then
     exit 1;
 fi
 
-cd $publishDirctory
+cd $publishDirectory
 zip -r release.zip .
 mv release.zip $workingDirectory/release.zip
 cd $workingDirectory
